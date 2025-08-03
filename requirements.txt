@@ -2,6 +2,6 @@ langchain
 faiss-cpu
 python-dotenv
 PyPDF2
-openai
+Gemini
 tqdm
 docx2txt
