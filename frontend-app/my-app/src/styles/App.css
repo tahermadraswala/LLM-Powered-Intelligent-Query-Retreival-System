@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+.App-header {
+  margin-bottom: 30px;
+}
+
+.query-form {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.query-form form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.query-form input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.query-form button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.response {
+  margin-top: 20px;
+  text-align: left;
+  background: #f6f6f6;
+  padding: 15px;
+  border-radius: 6px;
+  min-height: 40px;
+}

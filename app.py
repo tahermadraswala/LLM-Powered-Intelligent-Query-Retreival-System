@@ -10,6 +10,7 @@ from utils import process_and_chunk_documents
 # Load environment variables from .env file
 load_dotenv()
 
+from flask_cors import CORS
 # --- Configuration ---
 DATA_FOLDER = "data"
 VECTOR_STORE_PATH = "faiss_index"
@@ -83,38 +84,29 @@ def create_rag_chain():
 
 
 if __name__ == "__main__":
-    # Check if the vector store exists before trying to query it
-    if not os.path.exists(VECTOR_STORE_PATH):
-        print(f"Vector store not found at '{VECTOR_STORE_PATH}'.")
-        print("Please run build_vector_store() first.")
-        # build_vector_store() # Uncomment this line to build the index if it's missing
-    else:
-        # Create the RAG chain once at the start
+    from flask import Flask, request, jsonify
+
+    app = Flask(__name__)
+
+    CORS(app)  # Enable CORS for all routes
+    claim_processor_chain = None
+    if os.path.exists(VECTOR_STORE_PATH):
         print("Loading the claim processor... Please wait.")
         claim_processor_chain = create_rag_chain()
-        print("Claim processor is ready. Type 'exit' or 'quit' to end the session.")
-        
-        # --- NEW: Start an interactive loop to accept user queries ---
-        while True:
-            print("\n" + "="*50)
-            # Use the input() function to get a query from the user
-            user_query = input("Please enter your insurance query: ")
-            
-            # Check if the user wants to exit the loop
-            if user_query.lower() in ["exit", "quit"]:
-                print("Thank you for using the claim processor. Goodbye!")
-                break
-            
-            # Ensure the user entered something
-            if not user_query.strip():
-                print("Query cannot be empty. Please try again.")
-                continue
+        print("Claim processor is ready.")
+    else:
+        print(f"Vector store not found at '{VECTOR_STORE_PATH}'.")
+        print("Please run build_vector_store() first.")
 
-            print("\n--- Processing... ---\n")
-            
-            # Invoke the chain with the user's query
-            response = claim_processor_chain.invoke(user_query)
-            
-            # Print the final, reasoned response
-            print("Response:\n")
-            print(response)
+    @app.route("/query", methods=["POST"])
+    def query():
+        if claim_processor_chain is None:
+            return jsonify({"answer": "Claim processor not initialized."}), 500
+        data = request.get_json()
+        user_query = data.get("query", "")
+        if not user_query.strip():
+            return jsonify({"answer": "Query cannot be empty."}), 400
+        response = claim_processor_chain.invoke(user_query)
+        return jsonify({"answer": response})
+
+    app.run(host="0.0.0.0", port=5000)
