@@ -1,57 +1,96 @@
-# LLM-Powered-Intelligent-Query-Retreival-System
+readme_text = """
+# LLM-Powered Intelligent Query Retrieval System
 
-This project is an AI-powered system designed to answer natural language queries based on the content of large, unstructured documents like policy manuals or contracts. It uses a Retrieval-Augmented Generation (RAG) architecture to provide accurate, context-aware, and explainable answers.
+A powerful AI system that leverages Large Language Models (LLMs) to understand natural language queries and retrieve relevant information from unstructured documents like policy files, contracts, and emails.
 
-## Features
+## 🔍 Features
 
-* **Natural Language Queries:** Ask questions in plain English.
-* **Multi-Format Document Support:** Ingests and processes PDF and DOCX files.
-* **Intelligent Reasoning:** Uses a Large Language Model (LLM) to understand context and apply policy rules based on user intent.
-* **Explainable AI:** Provides justifications for its decisions by citing the specific clauses used.
-* **Interactive CLI:** A command-line interface to ask multiple questions in a single session.
+- 📄 Upload documents (PDFs, DOCs, etc.)
+- 🤖 Ask natural language questions
+- 🧠 Get precise answers with contextual information
+- ⚡ Fast retrieval using vector databases and embeddings
+- 🔐 Authentication and secure document access
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-* **Language:** Python
-* **Core Libraries:** LangChain, Google Generative AI
-* **Vector Store:** FAISS (for local semantic search)
-* **Document Processing:** PyPDF, Unstructured
+**Frontend**
+- React.js
+- Tailwind CSS
 
-## Setup and Installation
+**Backend**
+- FastAPI (Python)
+- Langchain
+- OpenAI / LlamaIndex
+- FAISS (Vector DB)
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/tahermadraswala/LLM-Powered-Intelligent-Query-Retreival-System.git](https://github.com/tahermadraswala/LLM-Powered-Intelligent-Query-Retreival-System.git)
-    cd LLM-Powered-Intelligent-Query-Retreival-System
-    ```
-2.  **Install dependencies:**
-    *(It's recommended to create a virtual environment first)*
-    ```bash
-    pip install -r requirements.txt
-    ```
-    *(Note: To create the `requirements.txt` file, run `pip freeze > requirements.txt` in your terminal).*
+**Others**
+- Pinecone / ChromaDB (Optional)
+- Docker (Optional)
+- GitHub Actions (Optional CI/CD)
 
-3.  **Set up environment variables:**
-    * Create a file named `.env` in the root directory.
-    * Add your Google API key to the file:
-        ```
-        GOOGLE_API_KEY="YOUR_SECRET_API_KEY"
-        ```
+## 🚀 Getting Started
 
-## How to Run
+### 1. Clone the Repository
 
-1.  **Add Documents:** Place your `.pdf` or `.docx` files into the `data/` folder.
-2.  **Build the Knowledge Base (Run Once):**
-    * In `app.py`, uncomment the `build_vector_store()` line.
-    * Run `python app.py`. This will create a `faiss_index` folder.
-3.  **Query the System:**
-    * Comment out the `build_vector_store()` line in `app.py` again.
-    * Run `python app.py` to start the interactive session and ask questions.
+```bash
+git clone https://github.com/tahermadraswala/LLM-Powered-Intelligent-Query-Retreival-System.git
+cd LLM-Powered-Intelligent-Query-Retreival-System
+2. Setup the Backend
+bash
+Always show details
 
-## Contributors
+Copy
+cd backend
+python -m venv venv
+source venv/bin/activate      # For Linux/Mac
+venv\\Scripts\\activate         # For Windows
 
-This project was a collaborative effort.
+pip install -r requirements.txt
+uvicorn main:app --reload
+Note: Make sure to configure .env with your API keys (e.g., OpenAI).
 
-* **Atharva Mali:** Lead development, core logic implementation, and RAG pipeline architecture.
-* **Taher Madraswala:** Project management, testing, and GitHub administration.
+3. Setup the Frontend
+bash
+Always show details
+
+Copy
+cd frontend-app/my-app
+npm install
+npm run dev
+App will be live at: http://localhost:5173/
+
+📁 Folder Structure
+graphql
+Always show details
+
+Copy
+LLM-Powered-Intelligent-Query-Retreival-System/
+├── backend/               # FastAPI backend with LLM logic
+├── frontend-app/my-app/   # React frontend
+├── requirements.txt
+└── README.md
+📌 To Do / Upcoming
+ Add user authentication
+
+ Multi-language support
+
+ Plug-and-play document types
+
+ Analytics dashboard
+
+👨‍💻 Contributors
+Atharva Sachidanand Mali
+Tahir Madraswala
+
+📄 License
+MIT License. See LICENSE file.
+"""
+
+
+
+Save PDF
+pdf_path = "/mnt/data/LLM_Query_Retrieval_README.pdf"
+pdf.output(pdf_path)
+
+pdf_path
 
