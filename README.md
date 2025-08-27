@@ -1,4 +1,4 @@
-readme_text = """
+
 # LLM-Powered Intelligent Query Retrieval System
 
 A powerful AI system that leverages Large Language Models (LLMs) to understand natural language queries and retrieve relevant information from unstructured documents like policy files, contracts, and emails.
