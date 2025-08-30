@@ -80,7 +80,7 @@ LLM-Powered-Intelligent-Query-Retreival-System/
 
 👨‍💻 Contributors
 Atharva Sachidanand Mali
-Tahir Madraswala
+Taher Madraswala
 
 📄 License
 MIT License. See LICENSE file.
