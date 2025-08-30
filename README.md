@@ -18,7 +18,7 @@ A powerful AI system that leverages Large Language Models (LLMs) to understand n
 - Tailwind CSS
 
 **Backend**
-- FastAPI (Python)
+- Flask
 - Langchain
 - OpenAI / LlamaIndex
 - FAISS (Vector DB)
